@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row mb-3  " style="background-color:SkyBlue;">
+            <div class="col-sm-12" >
+                <h1 class="text-center display-4">Seznam žánrů v databázi</h1>
+            </div>
+        </div>
+        {% if genre_list %}
+            <table class="table">
+                <tbody>
+                    {% for genre in genre_list %}
+                        <tr>
+                            <th class="text-warning">{{ genre }}</th>
+                            <td class="text-center"><a class="btn bg-danger btn-sm" href="{% url 'genre-delete' genre.id %}">Smazat</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <div  style="text-align:center;">
+            <a class="btn bg-warning"  href="{% url 'genre-create' %}">Přidat žánr</a>
+        </div>
+        {% endif %}
+
+{% endblock %}
